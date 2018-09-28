@@ -266,6 +266,7 @@ jQuery(function ($) {
       $(menuLinkContainer).toggleClass('animateUp50');
       $(menuLinkContainerLinks).toggleClass('animateUp');
       $(menuMobile).toggleClass('pointer-all');
+      $('header').toggleClass('no-background');
 
 
       $('svg.logo path').toggleClass('white-fill');
@@ -309,35 +310,59 @@ jQuery(function ($) {
 
 
 
-  $(document).on("ready newPageReady", function () {
 
-    useInView();
-    openNav();
+  function loadFunctions() {
+    $(window).on("load", function () {
 
-    changeHeaderColor();
-    headerOnWhite();
-    firstProjectAnimate();
+      useInView();
+      openNav();
 
-
-    setInterval(mainSlider, 7000);
-    setInterval(mainSliderTitles, 7000);
-    setInterval(circleLoader, 7000);
+      changeHeaderColor();
+      headerOnWhite();
+      firstProjectAnimate();
 
 
-    progressBar();
-    playVideoCursor();
-    projectLoad();
-    scrollTitles();
+      setInterval(mainSlider, 7000);
+      setInterval(mainSliderTitles, 7000);
+      setInterval(circleLoader, 7000);
 
 
+      progressBar();
+      playVideoCursor();
+      projectLoad();
+      scrollTitles();
+    });
+  }
 
+  $(function () {
+    'use strict';
+    var options = {
+        prefetch: true,
+        cacheLength: 2,
+        onStart: {
+          duration: 250, // Duration of our animation
+          render: function ($container) {
+            // Add your CSS animation reversing class
+            $container.addClass('is-exiting');
 
+            // Restart your animation
+            smoothState.restartCSSAnimations();
+          }
+        },
+        onReady: {
+          duration: 0,
+          render: function ($container, $newContent) {
+            // Remove your CSS animation reversing class
+            $container.removeClass('is-exiting');
 
-    // if (!$('div.content-area').hasClass('work-template')) {
-    //   changeHeaderColor();
-    // }
+            // Inject the new content
+            $container.html($newContent);
 
-
-
+          }
+        }
+      },
+      smoothState = $('#main').smoothState(options).data('smoothState');
   });
+
+  loadFunctions();
 });

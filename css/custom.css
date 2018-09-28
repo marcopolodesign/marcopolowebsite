@@ -1081,6 +1081,7 @@ a.project-link {
 
 .active-trigger {
   opacity: 1;
+  z-index: 9;
 }
 
 .menu-mobile-nav {
@@ -1121,6 +1122,10 @@ path.white-fill {
 
 .white-line line {
   stroke: #fff !important;
+}
+
+.no-background {
+  background-color: #fff0 !important;
 }
 
 /* .project-content div.in-viewport,

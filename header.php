@@ -24,7 +24,7 @@
 
 <body <?php body_class(); ?>>
 
-<div id="barba-wrapper">
+<div>
 	<div id="page" class="site">
 		
 
@@ -79,7 +79,13 @@
 						</g>
 					</svg>
 				</div>
-				<div class="menu-mobile-container absolute top-0 left-0 w-100 h-100vh z-9 flex flex-column justify-between">
+				
+		</header><!-- #masthead -->
+
+		<div id="content" class="site-content relative" id="main">
+
+
+			<div class="menu-mobile-container fixed top-0 left-0 w-100 h-100vh z-9 flex flex-column justify-between">
 						<div class="menu-mobile-nav z-9999 container tungsten ttu white list mb4 ml-0">
 							<?php
 								wp_nav_menu( array(
@@ -88,18 +94,15 @@
 								) );
 							?>
 						
-						<div class="menu-mobile-subnav mt5">
-								<a class="gt-pressura-mono white h4-big db mb2">Behance</a>
-								<a class="gt-pressura-mono white h4-big db">Instagram</a>
-						</div>
+								<div class="menu-mobile-subnav mt5">
+										<a class="gt-pressura-mono white h4-big db mb2">Behance</a>
+										<a class="gt-pressura-mono white h4-big db">Instagram</a>
+								</div>
 
-							<div class="menu-mobile-directions align-end mt5">
+									<div class="menu-mobile-directions align-end mt5">
 
-								<a class="gt-pressura-mono white h4-big">Av. del Libertador 7766, <br>Buenos Aires, Argentina</a>
+										<a class="gt-pressura-mono white h4-big">Av. del Libertador 7766, <br>Buenos Aires, Argentina</a>
+								</div>
 						</div>
-			</div>
 				
-			</div><!-- #site-navigation -->
-		</header><!-- #masthead -->
-
-		<div id="content" class="site-content barba-container relative">
+			</div><!-- .menu-mobile-container -->
