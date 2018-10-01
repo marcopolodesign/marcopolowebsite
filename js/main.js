@@ -161,7 +161,16 @@ jQuery(function($) {
       });
     }
 
-    if ($(window).width() > 480 && $('div.content-area').is('about-template')) {
+    if ($(window).width() < 768 && $('div.content-area').is('work-template')) {
+      $(document).on('scroll', function() {
+        var currentScroll = $(document).scrollTop();
+        var currentScrollOffset = currentScroll + 140;
+        var colorTrigger = $('#project-waypoint').offset().top;
+
+        $('svg.logo path').css('fill', '#e66065');
+        $('.menu-trigger-svg line').css('stroke', '#e66065');
+        $('.header-inner').css('background-color', '#fff');
+      });
     }
   }
 
@@ -267,6 +276,7 @@ jQuery(function($) {
     const menuLinkContainerLinks = document.querySelectorAll('.menu-mobile-container ul li a');
 
     $(trigger).on('click', function() {
+      $('.header-inner').css('background-color', '');
       $(menuMobile).toggleClass('active-trigger');
       $(menuLinkContainer).toggleClass('animateUp50');
       $(menuLinkContainerLinks).toggleClass('animateUp');
@@ -339,13 +349,13 @@ jQuery(function($) {
       reRunFunctions();
       openNav();
       useInView();
-      changeHeaderColor();
     });
   }
 
   function reRunFunctions() {
     $(document).ready(function() {
       headerOnWhite();
+      changeHeaderColor();
       firstProjectAnimate();
       progressBar();
       playVideoCursor();
