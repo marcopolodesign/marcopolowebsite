@@ -1,11 +1,12 @@
 <?php /* Template Name: About Us */?>
 <?php get_header();?>
 
+
+
 	<div id="primary" class="content-area about-template">
 		<main id="main" class="site-main ">
 
-    <div class="w-100 h-100vh bg-bottom cover flex smooth-scroll relative" id="about-us-bcgd"style="<?php if (get_field('background-image')): ?> background-image: url(<?php the_field('background-image');?>)
-        <?php endif;?>;">
+    <div class="bg-marcopolo-red w-100 h-100vh bg-bottom cover flex smooth-scroll relative" id="about-us-bcgd" >
 
 
           <div class="about-us-intro container tablet margin-auto ml-0 mb-0">
@@ -45,7 +46,7 @@
 
 
         <div class="about-us-intro container mobile margin-auto ml-0">
-           <div class="about-us-text ">
+           <div class="about-us-text">
               <h1>WE ARE MARCO POLO CREATIVE AGENCY,
               A MULTIDISIPLINARY TEAM THAT CREATES
               BUSINESS GROWING COMMUNICATION</h1>

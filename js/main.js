@@ -1,4 +1,4 @@
-jQuery(function ($) {
+jQuery(function($) {
   currentSlide = 1;
 
   function mainSlider() {
@@ -33,13 +33,13 @@ jQuery(function ($) {
         currentSlide = 0;
       }
 
-      slides.forEach(function (slides, index) {
+      slides.forEach(function(slides, index) {
         $(slide).fadeIn();
         $(slide).css('z-index', currentSlide);
         $(prevSlide).fadeOut();
       });
 
-      bcgdImages.forEach(function (bcgdImages, index) {
+      bcgdImages.forEach(function(bcgdImages, index) {
         $(bcgdImage).removeClass('scaled');
       });
 
@@ -90,15 +90,15 @@ jQuery(function ($) {
         $(sliderCTA).addClass('animateUpCTA');
       }
 
-      titles.forEach(function (titles, index) {
+      titles.forEach(function(titles, index) {
         $(title).addClass('animateUp');
       });
 
-      titlesContainer.forEach(function (titlesContainer, index) {
+      titlesContainer.forEach(function(titlesContainer, index) {
         $(titleContainer).addClass('animateUp50');
       });
 
-      sliderCTAS.forEach(function (sliderCTAS, index) {
+      sliderCTAS.forEach(function(sliderCTAS, index) {
         $(sliderCTA).addClass('animateUpCTA');
       });
 
@@ -126,7 +126,13 @@ jQuery(function ($) {
 
   function changeHeaderColor() {
     if ($('div.content-area').is('.home, .about-template, .project-template')) {
-      $(document).on('scroll', function () {
+      $('svg.logo path').css('fill', '');
+      $('.main-navigation li a').css('color', '');
+      $('.breadcrumbs-inner h4, .breadcrumbs-inner a').css('color', '');
+    }
+
+    if ($('div.content-area').is('.home, .about-template, .project-template')) {
+      $(document).on('scroll', function() {
         var currentScroll = $(document).scrollTop();
         var currentScrollOffset = currentScroll + 140;
         var colorTrigger = $('#project-waypoint').offset().top;
@@ -154,17 +160,19 @@ jQuery(function ($) {
         }
       });
     }
+
+    if ($(window).width() > 480 && $('div.content-area').is('about-template')) {
+    }
   }
 
   function headerOnWhite() {
     if ($('div.content-area').hasClass('work-template')) {
-
-      $(document).ready(function () {
+      $(document).ready(function() {
         $('svg.logo path').css('fill', '#e66065');
         $('.main-navigation li a').css('color', '#e66065');
         $('.menu-trigger-svg line').css('stroke', '#e66065');
 
-        $(document).on('scroll', function () {
+        $(document).on('scroll', function() {
           var currentScroll = $(document).scrollTop();
 
           if ($(window).width() <= 480 && currentScroll > 0) {
@@ -181,10 +189,10 @@ jQuery(function ($) {
   function playVideoCursor() {
     if ($('div.content-area').hasClass('project-template')) {
       $('.video-container')
-        .mouseover(function () {
+        .mouseover(function() {
           const videoContainer = document.querySelector('.video-container');
 
-          videoContainer.addEventListener('mousemove', function (event) {
+          videoContainer.addEventListener('mousemove', function(event) {
             const mouseX = event.pageX;
             const pageY = event.pageY;
 
@@ -199,7 +207,7 @@ jQuery(function ($) {
             cursor.style.transition = '';
           });
         })
-        .mouseout(function () {
+        .mouseout(function() {
           const cursor = document.querySelector('.play-video-cursor');
 
           cursor.style.left = 50 + '%';
@@ -212,12 +220,12 @@ jQuery(function ($) {
   }
 
   function progressBar() {
-    $(document).on("ready newPageReady", function () {
+    $(document).on('ready newPageReady', function() {
       if ($('div.content-area').hasClass('project-template')) {
         const bodyTag = document.querySelector('body');
         const progressBarWidth = document.querySelector('div.progress');
 
-        document.addEventListener('scroll', function () {
+        document.addEventListener('scroll', function() {
           const pixels = window.pageYOffset;
           const pageHeight = bodyTag.getBoundingClientRect().height;
           const totalScrollableDistance = pageHeight - window.innerHeight;
@@ -228,29 +236,27 @@ jQuery(function ($) {
         });
       }
     });
-
   }
 
   function useInView() {
     inView('.gallery-image, .inview-animate, .project-micellaneous div, .project-text, .xd-embed')
       .on('enter', elements => {
-        elements.classList.add('animate-inview')
+        elements.classList.add('animate-inview');
       })
-      .on('exit', elements => {
+      .on('exit', elements => {});
 
-      })
-
-
-    inView.threshold(0.2)
+    inView.threshold(0.2);
   }
 
   function firstProjectAnimate() {
     if ($('div.content-area').hasClass('work-template')) {
-
-      const projects = document.querySelectorAll('.is-project')
+      const projects = document.querySelectorAll('.is-project');
       const firstProject = projects[0];
 
+      const workTitles = document.querySelector('.work-titles');
+
       firstProject.classList.add('animate-inview');
+      workTitles.classList.add('animate-inview');
     }
   }
 
@@ -260,21 +266,16 @@ jQuery(function ($) {
     const menuLinkContainer = document.querySelectorAll('.menu-mobile-container ul li');
     const menuLinkContainerLinks = document.querySelectorAll('.menu-mobile-container ul li a');
 
-    $(trigger).on('click', function () {
-
+    $(trigger).on('click', function() {
       $(menuMobile).toggleClass('active-trigger');
       $(menuLinkContainer).toggleClass('animateUp50');
       $(menuLinkContainerLinks).toggleClass('animateUp');
       $(menuMobile).toggleClass('pointer-all');
       $('header').toggleClass('no-background');
 
-
       $('svg.logo path').toggleClass('white-fill');
       $(trigger).toggleClass('white-line');
-
-
     });
-
   }
 
   function scrollTitles() {
@@ -282,51 +283,70 @@ jQuery(function ($) {
       $('.site-content').addClass('smooth-container');
       $('.site-content').addClass('relative');
 
-
       $(document).on('scroll', () => {
-
         var pixels = $(document).scrollTop();
         $('.smooth-container').css('top', pixels * 0.2);
 
         if ($('body').hasClass('post-template-default')) {
-          $('.smooth-titles').css('top', pixels * -0.15);
-
+          // $('.smooth-titles').css('top', pixels * -0.15);
         }
-
       });
     }
-
-
   }
-
-
 
   function projectLoad() {
     if ($('div.content-area').hasClass('project-template')) {
-      $('.slideshow-project').removeClass('scaled');
+      setTimeout(function() {
+        $('.slideshow-project').removeClass('scaled');
+      }, 500);
     }
   }
 
+  function preloaderColor() {
+    if ($('div.content-area').hasClass('work-template')) {
+      $('.preloader-animate').css('background-color', '#fff');
+    } else if ($('div.content-area').hasClass('about-template')) {
+      $('.preloader-animate').css('background-color', '#e66065');
+    } else if ($('div.content-area').hasClass('home')) {
+      $('.preloader-animate').css('background-color', '#fff');
+    } else if ($('div.content-area').hasClass('project-template')) {
+      $('.preloader-animate').css('background-color', '#fff');
+    }
+  }
 
+  function pageColor() {
+    if ($('div.content-area').hasClass('about-template')) {
+      $('.site').css('background-color', '#e66065');
+    } else if ($('div.content-area').hasClass('work-template')) {
+      $('.site').css('background-color', '#fff');
+    }
+  }
 
+  function preloaderChange() {
+    if ($('.preloader-animate').hasClass('preloader-animated')) {
+      $('.preloader-animate').removeClass('preloader-animated');
+    } else {
+      $('.preloader-animate').addClass('preloader-animated');
+    }
+  }
 
-
-  function loadFunctions() {
-    $(window).on("load", function () {
-
-      useInView();
-      openNav();
-
-      changeHeaderColor();
-      headerOnWhite();
-      firstProjectAnimate();
-
-
+  function justOnceFunctions() {
+    $(document).ready(function() {
       setInterval(mainSlider, 7000);
       setInterval(mainSliderTitles, 7000);
       setInterval(circleLoader, 7000);
 
+      reRunFunctions();
+      openNav();
+      useInView();
+      changeHeaderColor();
+    });
+  }
 
+  function reRunFunctions() {
+    $(document).ready(function() {
+      headerOnWhite();
+      firstProjectAnimate();
       progressBar();
       playVideoCursor();
       projectLoad();
@@ -334,35 +354,42 @@ jQuery(function ($) {
     });
   }
 
-  $(function () {
-    'use strict';
-    var options = {
-        prefetch: true,
-        cacheLength: 2,
-        onStart: {
-          duration: 250, // Duration of our animation
-          render: function ($container) {
-            // Add your CSS animation reversing class
-            $container.addClass('is-exiting');
+  $('.site-branding a, .main-navigation li a, .menu-mobile-nav ul li a').click(function(e) {
+    e.preventDefault();
 
-            // Restart your animation
-            smoothState.restartCSSAnimations();
-          }
-        },
-        onReady: {
-          duration: 0,
-          render: function ($container, $newContent) {
-            // Remove your CSS animation reversing class
-            $container.removeClass('is-exiting');
+    var href = $(this).attr('href');
 
-            // Inject the new content
-            $container.html($newContent);
+    var settings = {
+      anchors: 'a',
+      debug: true,
+      onStart: {
+        duration: 500, // Duration of our animation
+        render: function($container) {
+          $('svg.logo path').css('fill', '#e66065');
+          $('.main-navigation li a').css('color', '#e66065');
+          $('.menu-trigger-svg line').css('stroke', '#e66065');
 
-          }
+          $container.fadeOut();
         }
       },
-      smoothState = $('#main').smoothState(options).data('smoothState');
+      onReady: {
+        duration: 1000,
+        render: function($container, $newContent) {
+          // Remove your CSS animation reversing class
+          $container.html($newContent);
+          $container.fadeIn();
+        }
+      },
+      onAfter: function() {
+        reRunFunctions();
+      }
+    };
+
+    var content = $('.site-content')
+      .smoothState(settings)
+      .data('smoothState');
+    content.load(href);
   });
 
-  loadFunctions();
+  justOnceFunctions();
 });

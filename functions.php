@@ -147,7 +147,7 @@ function marcopolo_scripts() {
 
 	wp_enqueue_script('marcopolo-animate', get_template_directory_uri() . '/js/anime.js');
 
-	wp_enqueue_script( 'marcopolo-smoothstate-js', get_template_directory_uri() . '/js/smoothstate.js');
+	wp_enqueue_script( 'marcopolo-smoothstatejs', get_template_directory_uri() . '/js/smoothstate.js' , array( 'jquery' ), '0.5.2' , true);
 
 	wp_enqueue_script('marcopolo-script', get_template_directory_uri() . '/js/jquery.waypoints.min.js');
 

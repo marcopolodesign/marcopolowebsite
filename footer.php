@@ -10,7 +10,7 @@
 	 */
 
 	?>
-
+			</div>				
 		</div><!-- #content -->
 
 		<footer id="colophon" class="site-footer">
@@ -19,10 +19,12 @@
 			</div><!-- .site-info -->
 		</footer><!-- #colophon -->
 	</div><!-- #page -->
-</div> <!-- barba-wrapper end-->
+
 
 <?php wp_footer(); ?>
 <script src="https://unpkg.com/in-view@0.6.1/dist/in-view.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/barba.js/1.0.0/barba.min.js" type="text/javascript"></script>
+
+
+
 </body>
 </html>
