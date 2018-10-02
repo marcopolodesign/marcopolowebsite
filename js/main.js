@@ -19,9 +19,15 @@ jQuery(function($) {
         document.querySelectorAll('div.slideshow-project.desktop')
       );
 
+      const bcgdImagesMobile = Array.prototype.slice.call(
+        document.querySelectorAll('div.slideshow-project.mobile')
+      );
+
       bcgdImages.reverse();
+      bcgdImagesMobile.reverse();
 
       const bcgdImage = bcgdImages[currentSlide];
+      const bcgdImageMobile = bcgdImagesMobile[currentSlide];
 
       if (currentSlide >= maxSlides) {
         $(slides).fadeIn();
@@ -29,6 +35,7 @@ jQuery(function($) {
         $(slide).css('z-index', currentSlide);
 
         $(bcgdImages).addClass('scaled');
+        $(bcgdImagesMobile).addClass('scaled');
 
         currentSlide = 0;
       }
@@ -41,6 +48,7 @@ jQuery(function($) {
 
       bcgdImages.forEach(function(bcgdImages, index) {
         $(bcgdImage).removeClass('scaled');
+        $(bcgdImageMobile).removeClass('scaled');
       });
 
       currentSlide = currentSlide + 1;
@@ -139,6 +147,16 @@ jQuery(function($) {
     }
 
     if ($('div.content-area').is('.home, .about-template, .project-template')) {
+      if (
+        $(window).width() <= 480 &&
+        $('div.content-area').is('.about-template, .project-template')
+      ) {
+        $('svg.logo path').css('fill', '');
+        $('.menu-trigger-svg line').css('stroke', '');
+        $('.header-inner').css('background-color', '');
+        // $('.header-inner').css('box-shadow', 'rgb(153, 153, 153) 0px 0px 4px');
+      }
+
       $(document).on('scroll', function() {
         var currentScroll = $(document).scrollTop();
         var currentScrollOffset = currentScroll + 140;
@@ -291,31 +309,13 @@ jQuery(function($) {
       $('.header-inner').css('background-color', '');
       $(menuMobile).toggleClass('active-trigger');
       $(menuLinkContainer).toggleClass('animateUp50');
-      $(menuLinkContainerLinks).toggleClass('animateUp');
+      $(menuLinkContainerLinks).toggleClass('animateUpLinks');
       $(menuMobile).toggleClass('pointer-all');
       $('header').toggleClass('no-background');
 
       $('svg.logo path').toggleClass('white-fill');
       $(trigger).toggleClass('white-line');
     });
-  }
-
-  function closeNav() {
-    const trigger = document.querySelector('svg.menu-trigger-svg');
-    const menuMobile = document.querySelector('.menu-mobile-container');
-    const menuLinkContainer = document.querySelectorAll('.menu-mobile-container ul li');
-    const menuLinkContainerLinks = document.querySelectorAll('.menu-mobile-container ul li a');
-
-    if ($(menuMobile).hasClass('active-trigger')) {
-      $('.header-inner').css('background-color', '');
-      $(menuMobile).removeClass('active-trigger');
-      $(menuLinkContainer).removeClass('animateUp50');
-      $(menuLinkContainerLinks).removeClass('animateUp');
-      $(menuMobile).removeClass('pointer-all');
-      $('header').removeClass('no-background');
-      $('svg.logo path').removeClass('white-fill');
-      $(trigger).removeClass('white-line');
-    }
   }
 
   function scrollTitles() {
@@ -336,7 +336,7 @@ jQuery(function($) {
 
   function projectLoad() {
     setTimeout(function() {
-      $('.slideshow-project').removeClass('scaled');
+      $('.slideshow-inside').removeClass('scaled');
       $('.project-info-name h1, p.project-intro').addClass('animateUp');
     }, 300);
   }
@@ -369,6 +369,30 @@ jQuery(function($) {
     }
   }
 
+  function closeNav() {
+    const trigger = document.querySelector('svg.menu-trigger-svg');
+    const menuMobile = document.querySelector('.menu-mobile-container');
+    const menuLinkContainer = document.querySelectorAll('.menu-mobile-container ul li');
+    const menuLinkContainerLinks = document.querySelectorAll('.menu-mobile-container ul li a');
+
+    if ($(menuMobile).hasClass('active-trigger')) {
+      $('.header-inner').css('background-color', '');
+      $(menuMobile).removeClass('active-trigger');
+      $(menuLinkContainer).removeClass('animateUp50');
+      $(menuLinkContainerLinks).removeClass('animateUp');
+      $(menuMobile).removeClass('pointer-all');
+      $('header').removeClass('no-background');
+      $('svg.logo path').removeClass('white-fill');
+      $(trigger).removeClass('white-line');
+    }
+  }
+
+  function blacklist() {
+    const blackListLinks = document.querySelectorAll("a[href='mailto:hi@marcopoloca.com']");
+
+    $(blackListLinks).addClass('blacklist');
+  }
+
   function justOnceFunctions() {
     $(document).ready(function() {
       setInterval(mainSlider, 7000);
@@ -382,18 +406,17 @@ jQuery(function($) {
   function reRunFunctions() {
     $(document).ready(function() {
       useInView();
-      openNav();
       firstProjectAnimate();
       progressBar();
       playVideoCursor();
       scrollTitles();
-      closeNav();
       changeHeaderColor();
       projectLoad();
+      blacklist();
     });
   }
 
-  $('.main-navigation li a, .menu-mobile-nav ul li a').click(function(e, closeNav) {
+  $('.main-navigation li a, .menu-mobile-nav ul li a').click(function(e) {
     e.preventDefault();
 
     var href = $(this).attr('href');
@@ -401,20 +424,35 @@ jQuery(function($) {
     var settings = {
       anchors: 'a',
       debug: true,
-      cacheLength: 4,
+      blacklist: 'a.blacklist',
+      // cacheLength: 4,
       onStart: {
         duration: 700, // Duration of our animation
         render: function($container) {
           $container.fadeOut(600);
+          $('svg.logo path').css('fill', '#e66065');
+          $('.main-navigation li a').css('color', '#e66065');
+          $('.menu-trigger-svg line').css('stroke', '#e66065');
+        }
+      },
+      onProgress: {
+        duration: 1000,
+        render: function() {
+          console.log('progressing');
         }
       },
       onReady: {
         duration: 1000,
         render: function($container, $newContent) {
           // Remove your CSS animation reversing class
+          content.restartCSSAnimations();
+          console.log('ready');
+
           $container.html($newContent);
+          console.log('newcontent');
+
           projectLoad();
-          $container.fadeIn(700);
+          $container.fadeIn();
         }
       },
       onAfter: function() {
@@ -429,4 +467,6 @@ jQuery(function($) {
   });
 
   justOnceFunctions();
+  openNav();
+  closeNav();
 });

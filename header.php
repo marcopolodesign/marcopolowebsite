@@ -91,8 +91,8 @@
 							?>
 						
 								<div class="menu-mobile-subnav mt5">
-										<a class="gt-pressura-mono white h4-big db mb2">Behance</a>
-										<a class="gt-pressura-mono white h4-big db">Instagram</a>
+										<a href="http://behance.net/MatAldao"class="gt-pressura-mono white h4-big db mb2">Behance</a>
+										<a href="http://instagram.com/wearemarcopolo"class="gt-pressura-mono white h4-big db">Instagram</a>
 								</div>
 
 									<div class="menu-mobile-directions align-end mt5">
