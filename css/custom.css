@@ -359,11 +359,26 @@ h1.h-bigest {
   }
 }
 
+.project-info-name,
+.project-info-text {
+  overflow: hidden
+}
+
+.project-info-text {
+  margin-top: -40px;
+}
+
+.project-info-inner h1,
+p.project-intro {
+  transform: translateY(100%);
+}
+
 .animateUp {
   animation: translateUp;
   -webkit-animation: translateUp;
   animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   animation-duration: 0.9s;
+  animation-fill-mode: forwards;
 }
 
 @keyframes translateUp50 {
@@ -431,7 +446,7 @@ p {
 }
 
 p.project-intro {
-  margin-top: -40px;
+  /* margin-top: -40px; */
 }
 
 .h4-big,
@@ -1049,8 +1064,8 @@ a.project-link {
 
 @keyframes animateElements {
   0% {
-    opacity: 0;
-    transform: translateY(50%);
+    opacity: 0.6;
+    transform: translateY(30%);
   }
 
   100% {
@@ -1061,7 +1076,7 @@ a.project-link {
 
 .animate-inview {
   animation: animateElements;
-  animation-duration: 0.9s;
+  animation-duration: 0.5s;
   animation-fill-mode: forwards;
   animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   animation-direction: normal;

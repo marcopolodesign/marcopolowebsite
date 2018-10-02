@@ -16,9 +16,9 @@
           <div class="project-info-name overflow-hidden mb-40 ">
             <h1 class="info-featured-h"><?php the_title();?></h1>
           </div>
-
+          <div class="project-info-text">
           <p class="white w-80 project-intro "><?php the_sub_field('header_intro'); ?></p>
-
+          </div>
         </div>
         
       </div>

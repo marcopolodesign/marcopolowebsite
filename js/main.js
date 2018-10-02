@@ -131,11 +131,21 @@ jQuery(function($) {
       $('.breadcrumbs-inner h4, .breadcrumbs-inner a').css('color', '');
     }
 
+    if ($('div.content-area').is('.work-template')) {
+      $('svg.logo path').css('fill', '#e66065');
+      $('.main-navigation li a').css('color', '#e66065');
+      $('.breadcrumbs-inner h4, .breadcrumbs-inner a').css('color', '#000');
+      $('.menu-trigger-svg line').css('stroke', '#e66065');
+    }
+
     if ($('div.content-area').is('.home, .about-template, .project-template')) {
       $(document).on('scroll', function() {
         var currentScroll = $(document).scrollTop();
         var currentScrollOffset = currentScroll + 140;
         var colorTrigger = $('#project-waypoint').offset().top;
+
+        console.log(currentScrollOffset);
+        console.log(colorTrigger);
 
         if ($(window).width() >= 768 && currentScrollOffset > colorTrigger) {
           $('svg.logo path').css('fill', '#e66065');
@@ -147,7 +157,7 @@ jQuery(function($) {
           $('.breadcrumbs-inner h4, .breadcrumbs-inner a').css('color', '');
         }
 
-        if ($(window).width() <= 480 && currentScrollOffset > colorTrigger) {
+        if ($(window).width() <= 480 && colorTrigger < currentScrollOffset) {
           $('svg.logo path').css('fill', '#e66065');
           $('.menu-trigger-svg line').css('stroke', '#e66065');
           $('.header-inner').css('background-color', '#fff');
@@ -229,22 +239,20 @@ jQuery(function($) {
   }
 
   function progressBar() {
-    $(document).on('ready newPageReady', function() {
-      if ($('div.content-area').hasClass('project-template')) {
-        const bodyTag = document.querySelector('body');
-        const progressBarWidth = document.querySelector('div.progress');
+    if ($('div.content-area').hasClass('project-template')) {
+      const bodyTag = document.querySelector('body');
+      const progressBarWidth = document.querySelector('div.progress');
 
-        document.addEventListener('scroll', function() {
-          const pixels = window.pageYOffset;
-          const pageHeight = bodyTag.getBoundingClientRect().height;
-          const totalScrollableDistance = pageHeight - window.innerHeight;
+      document.addEventListener('scroll', function() {
+        const pixels = window.pageYOffset;
+        const pageHeight = bodyTag.getBoundingClientRect().height;
+        const totalScrollableDistance = pageHeight - window.innerHeight;
 
-          const percentage = pixels / totalScrollableDistance;
+        const percentage = pixels / totalScrollableDistance;
 
-          progressBarWidth.style.width = `${100 * percentage}%`;
-        });
-      }
-    });
+        progressBarWidth.style.width = `${100 * percentage}%`;
+      });
+    }
   }
 
   function useInView() {
@@ -259,6 +267,10 @@ jQuery(function($) {
 
   function firstProjectAnimate() {
     if ($('div.content-area').hasClass('work-template')) {
+      $('svg.logo path').css('fill', '#e66065');
+      $('.main-navigation li a').css('color', '#e66065');
+      $('.menu-trigger-svg line').css('stroke', '#e66065');
+
       const projects = document.querySelectorAll('.is-project');
       const firstProject = projects[0];
 
@@ -288,28 +300,45 @@ jQuery(function($) {
     });
   }
 
+  function closeNav() {
+    const trigger = document.querySelector('svg.menu-trigger-svg');
+    const menuMobile = document.querySelector('.menu-mobile-container');
+    const menuLinkContainer = document.querySelectorAll('.menu-mobile-container ul li');
+    const menuLinkContainerLinks = document.querySelectorAll('.menu-mobile-container ul li a');
+
+    if ($(menuMobile).hasClass('active-trigger')) {
+      $('.header-inner').css('background-color', '');
+      $(menuMobile).removeClass('active-trigger');
+      $(menuLinkContainer).removeClass('animateUp50');
+      $(menuLinkContainerLinks).removeClass('animateUp');
+      $(menuMobile).removeClass('pointer-all');
+      $('header').removeClass('no-background');
+      $('svg.logo path').removeClass('white-fill');
+      $(trigger).removeClass('white-line');
+    }
+  }
+
   function scrollTitles() {
     if ($('div.content-area').hasClass('project-template')) {
-      $('.site-content').addClass('smooth-container');
+      // $('.site-content').addClass('smooth-container');
       $('.site-content').addClass('relative');
 
       $(document).on('scroll', () => {
         var pixels = $(document).scrollTop();
-        $('.smooth-container').css('top', pixels * 0.2);
+        // $('.smooth-container').css('top', pixels * 0.2);
 
         if ($('body').hasClass('post-template-default')) {
-          // $('.smooth-titles').css('top', pixels * -0.15);
+          $('.smooth-titles').css('top', pixels * -0.15);
         }
       });
     }
   }
 
   function projectLoad() {
-    if ($('div.content-area').hasClass('project-template')) {
-      setTimeout(function() {
-        $('.slideshow-project').removeClass('scaled');
-      }, 500);
-    }
+    setTimeout(function() {
+      $('.slideshow-project').removeClass('scaled');
+      $('.project-info-name h1, p.project-intro').addClass('animateUp');
+    }, 300);
   }
 
   function preloaderColor() {
@@ -347,24 +376,24 @@ jQuery(function($) {
       setInterval(circleLoader, 7000);
 
       reRunFunctions();
-      openNav();
-      useInView();
     });
   }
 
   function reRunFunctions() {
     $(document).ready(function() {
-      headerOnWhite();
-      changeHeaderColor();
+      useInView();
+      openNav();
       firstProjectAnimate();
       progressBar();
       playVideoCursor();
-      projectLoad();
       scrollTitles();
+      closeNav();
+      changeHeaderColor();
+      projectLoad();
     });
   }
 
-  $('.site-branding a, .main-navigation li a, .menu-mobile-nav ul li a').click(function(e) {
+  $('.main-navigation li a, .menu-mobile-nav ul li a').click(function(e, closeNav) {
     e.preventDefault();
 
     var href = $(this).attr('href');
@@ -372,14 +401,11 @@ jQuery(function($) {
     var settings = {
       anchors: 'a',
       debug: true,
+      cacheLength: 4,
       onStart: {
-        duration: 500, // Duration of our animation
+        duration: 700, // Duration of our animation
         render: function($container) {
-          $('svg.logo path').css('fill', '#e66065');
-          $('.main-navigation li a').css('color', '#e66065');
-          $('.menu-trigger-svg line').css('stroke', '#e66065');
-
-          $container.fadeOut();
+          $container.fadeOut(600);
         }
       },
       onReady: {
@@ -387,7 +413,8 @@ jQuery(function($) {
         render: function($container, $newContent) {
           // Remove your CSS animation reversing class
           $container.html($newContent);
-          $container.fadeIn();
+          projectLoad();
+          $container.fadeIn(700);
         }
       },
       onAfter: function() {
@@ -395,7 +422,7 @@ jQuery(function($) {
       }
     };
 
-    var content = $('.site-content')
+    var content = $('#page')
       .smoothState(settings)
       .data('smoothState');
     content.load(href);
