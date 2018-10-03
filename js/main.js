@@ -300,21 +300,23 @@ jQuery(function($) {
   }
 
   function openNav() {
-    const trigger = document.querySelector('svg.menu-trigger-svg');
-    const menuMobile = document.querySelector('.menu-mobile-container');
-    const menuLinkContainer = document.querySelectorAll('.menu-mobile-container ul li');
-    const menuLinkContainerLinks = document.querySelectorAll('.menu-mobile-container ul li a');
+    $(document).ready(function() {
+      const trigger = document.querySelector('svg.menu-trigger-svg');
+      const menuMobile = document.querySelector('.menu-mobile-container');
+      const menuLinkContainer = document.querySelectorAll('.menu-mobile-container ul li');
+      const menuLinkContainerLinks = document.querySelectorAll('.menu-mobile-container ul li a');
 
-    $(trigger).on('click', function() {
-      $('.header-inner').css('background-color', '');
-      $(menuMobile).toggleClass('active-trigger');
-      $(menuLinkContainer).toggleClass('animateUp50');
-      $(menuLinkContainerLinks).toggleClass('animateUpLinks');
-      $(menuMobile).toggleClass('pointer-all');
-      $('header').toggleClass('no-background');
+      $(trigger).on('click', function() {
+        $('.header-inner').css('background-color', '');
+        $(menuMobile).toggleClass('active-trigger');
+        $(menuLinkContainer).toggleClass('animateUp50');
+        $(menuLinkContainerLinks).toggleClass('animateUpLinks');
+        $(menuMobile).toggleClass('pointer-all');
+        $('header').toggleClass('no-background');
 
-      $('svg.logo path').toggleClass('white-fill');
-      $(trigger).toggleClass('white-line');
+        $('svg.logo path').toggleClass('white-fill');
+        $(trigger).toggleClass('white-line');
+      });
     });
   }
 
@@ -369,24 +371,6 @@ jQuery(function($) {
     }
   }
 
-  function closeNav() {
-    const trigger = document.querySelector('svg.menu-trigger-svg');
-    const menuMobile = document.querySelector('.menu-mobile-container');
-    const menuLinkContainer = document.querySelectorAll('.menu-mobile-container ul li');
-    const menuLinkContainerLinks = document.querySelectorAll('.menu-mobile-container ul li a');
-
-    if ($(menuMobile).hasClass('active-trigger')) {
-      $('.header-inner').css('background-color', '');
-      $(menuMobile).removeClass('active-trigger');
-      $(menuLinkContainer).removeClass('animateUp50');
-      $(menuLinkContainerLinks).removeClass('animateUp');
-      $(menuMobile).removeClass('pointer-all');
-      $('header').removeClass('no-background');
-      $('svg.logo path').removeClass('white-fill');
-      $(trigger).removeClass('white-line');
-    }
-  }
-
   function blacklist() {
     const blackListLinks = document.querySelectorAll("a[href='mailto:hi@marcopoloca.com']");
 
@@ -413,6 +397,7 @@ jQuery(function($) {
       changeHeaderColor();
       projectLoad();
       blacklist();
+      openNav();
     });
   }
 
@@ -425,7 +410,7 @@ jQuery(function($) {
       anchors: 'a',
       debug: true,
       blacklist: 'a.blacklist',
-      // cacheLength: 4,
+      cacheLength: 4,
       onStart: {
         duration: 700, // Duration of our animation
         render: function($container) {
@@ -467,6 +452,4 @@ jQuery(function($) {
   });
 
   justOnceFunctions();
-  openNav();
-  closeNav();
 });

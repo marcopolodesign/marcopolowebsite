@@ -81,7 +81,7 @@
 		</header>
 		<div class="preloader-animate work-preloader bg-marcopolo-red fixed bottom-0 left-0 w-100 h-100"></div>
 
-			<div class="menu-mobile-container fixed top-0 left-0 w-100 h-100vh z-9 flex flex-column justify-between">
+			<div class="menu-mobile-container fixed top-0 left-0 w-100 h-100vh z-9 flex flex-column justify-between not-active-trigger">
 						<div class="menu-mobile-nav z-9999 container tungsten ttu white list mb4 ml-0">
 							<?php
 								wp_nav_menu( array(
