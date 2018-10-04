@@ -413,21 +413,22 @@ jQuery(function($) {
       setInterval(mainSlider, 7000);
       setInterval(mainSliderTitles, 7000);
       setInterval(circleLoader, 7000);
-      smoothTrigers();
 
       reRunFunctions();
+      openNav();
+      changeHeaderColor();
     });
   }
 
   function reRunFunctions() {
     $(document).ready(function() {
-      useInView();
       firstProjectAnimate();
       progressBar();
       playVideoCursor();
       scrollTitles();
-      changeHeaderColor();
       projectLoad();
+      useInView();
+      changeHeaderColor();
     });
   }
 
@@ -439,7 +440,7 @@ jQuery(function($) {
     var settings = {
       anchors: 'a:not(.blacklist)',
       debug: true,
-      cacheLength: 4,
+      cacheLength: 0,
       onStart: {
         duration: 700, // Duration of our animation
         render: function($container) {
@@ -482,5 +483,4 @@ jQuery(function($) {
   });
 
   justOnceFunctions();
-  openNav();
 });

@@ -3,61 +3,66 @@
 
 
 
-	<div id="primary" class="content-area about-template">
-		<main id="main" class="site-main ">
+<div id="x" class="content-area about-template">
+  <main id="main" class="site-main ">
 
-    <div class="bg-marcopolo-red w-100 h-100vh bg-bottom cover flex smooth-scroll relative" id="about-us-bcgd" >
+    <div class="bg-marcopolo-red w-100 h-100vh bg-bottom cover flex smooth-scroll relative" id="about-us-bcgd">
 
 
-          <div class="about-us-intro container tablet margin-auto ml-0 mb-0">
-            <div class="about-us-text ">
-                  <h1>WE ARE MARCO POLO CREATIVE AGENCY,</h1>
+      <div class="about-us-intro container tablet margin-auto ml-0 mb-0">
+        <div class="about-us-text ">
+              <h1>WE ARE MARCO POLO CREATIVE AGENCY,</h1>
 
-                <div class="flex justify-between w-100 mv3">
-                  <span class="gt-pressura-mono">DESIGN</span>
-                  <span class="gt-pressura-mono">•</span>
-                  <span class="gt-pressura-mono">BRANDING</span>
-                  <span class="gt-pressura-mono">•</span>
-                  <span class="gt-pressura-mono">web</span>
-                  <span class="gt-pressura-mono">•</span>
-                  <span class="gt-pressura-mono">editorial</span>
-                  <span class="gt-pressura-mono">•</span>
-                  <span class="gt-pressura-mono">UX/UI</span>
-                  <span class="gt-pressura-mono">•</span>
-                  <span class="gt-pressura-mono">APPLICATIONS</span>
-                </div>
-
-                <h1>A MULTIDISIPLINARY TEAM THAT CREATES</h1>
-              <div class="flex justify-between w-100 mv3">
-                  <span class="gt-pressura-mono">marketing</span>
-                  <span class="gt-pressura-mono">•</span>
-                  <span class="gt-pressura-mono">storytelling</span>
-                  <span class="gt-pressura-mono">•</span>
-                  <span class="gt-pressura-mono">consulting</span>
-                  <span class="gt-pressura-mono">•</span>
-                  <span class="gt-pressura-mono">crossmedia</span>
-                  <span class="gt-pressura-mono">•</span>
-                  <span class="gt-pressura-mono">strategy</span>
-                </div>
-                <h1>BUSINESS GROWING COMMUNICATION</h1>
+            <div class="flex justify-between w-100 mv3">
+              <span class="gt-pressura-mono">DESIGN</span>
+              <span class="gt-pressura-mono">•</span>
+              <span class="gt-pressura-mono">BRANDING</span>
+              <span class="gt-pressura-mono">•</span>
+              <span class="gt-pressura-mono">web</span>
+              <span class="gt-pressura-mono">•</span>
+              <span class="gt-pressura-mono">editorial</span>
+              <span class="gt-pressura-mono">•</span>
+              <span class="gt-pressura-mono">UX/UI</span>
+              <span class="gt-pressura-mono">•</span>
+              <span class="gt-pressura-mono">APPLICATIONS</span>
             </div>
+
+            <h1>A MULTIDISIPLINARY TEAM THAT CREATES</h1>
+          <div class="flex justify-between w-100 mv3">
+              <span class="gt-pressura-mono">marketing</span>
+              <span class="gt-pressura-mono">•</span>
+              <span class="gt-pressura-mono">storytelling</span>
+              <span class="gt-pressura-mono">•</span>
+              <span class="gt-pressura-mono">consulting</span>
+              <span class="gt-pressura-mono">•</span>
+              <span class="gt-pressura-mono">crossmedia</span>
+              <span class="gt-pressura-mono">•</span>
+              <span class="gt-pressura-mono">strategy</span>
+            </div>
+            <h1>BUSINESS GROWING COMMUNICATION</h1>
         </div>
+      </div>
 
-
-
-        <div class="about-us-intro container mobile margin-auto ml-0">
-           <div class="about-us-text">
-              <h1>WE ARE MARCO POLO CREATIVE AGENCY,
-              A MULTIDISIPLINARY TEAM THAT CREATES
-              BUSINESS GROWING COMMUNICATION</h1>
-            </div>
-     </div>
+      <div class="about-us-intro container mobile margin-auto ml-0">
+          <div class="about-us-text">
+            <h1>WE ARE MARCO POLO CREATIVE AGENCY,
+            A MULTIDISIPLINARY TEAM THAT CREATES
+            BUSINESS GROWING COMMUNICATION</h1>
+          </div>
+      </div>
+  
     </div>
+
+    
 
     <div class="journey-container relative w-100 flex" id="project-waypoint">
           <div class="w-50 sticky h-100vh top-0 flex the-journey cover">
-            <div class="absolute translante-centered w-100"><h1 class="h-bigest tc">The Journey</h1></div>
-            <div class="absolute translante-centered journey-slug gt-pressura-mono"><h4 class="h4-big black">WHAT DO WE DO</h4></div>
+            <div class="absolute translante-centered w-100">
+              <h1 class="h-bigest tc">The Journey</h1>
+            </div>
+              <div class="absolute translante-centered journey-slug gt-pressura-mono">
+                <h4 class="h4-big black">WHAT DO WE DO</h4>
+            </div>
           </div>
 
         <div class="w-50 pa6 mv5">
@@ -84,7 +89,7 @@
               <h1 class="tungsten soft-transition relative top-0 left-0 lh-normal"><?php echo $category->name ?></h1>
               <div class="cat-description absolute top-50 left-50 translated-center tc w-100 soft-transition">
                 <h4 class="gt-pressura-mono marcopolo-red h4-big"><?php echo category_description($category->term_id) ?></h4>
-            </div>
+              </div>
 
             </div>
 
@@ -105,10 +110,10 @@
               
               <h4 class="marcopolo-red">Very Stubborn</h4>
           </div>
-
+      </div>
     </div>
 
-    <div class="about-contact ">
+    <div class="about-contact container">
         <div class="mv6 w-50 center">
               <h2 class="tungsten black">Now you know who we are. We’re always looking for new adventures to work on, so at this point, it’s up to you to make it happen. But here’s two options:</h2>
         </div>
@@ -130,12 +135,12 @@
                   <h1 class="contact-option-cta soft-transition transition-05s info-featured-h marcopolo-red relative top-0 left-0 convinced not-convinced">View the Work</h1>
                 </div>
             </a>
-        </div>
-      </div>
+          </div>
+    </div>
+    
+  </main>
 
-  </div>
-
-<div>
+</div>
 
 
 <?php get_footer(); ?>
