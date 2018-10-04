@@ -432,9 +432,7 @@ jQuery(function($) {
     });
   }
 
-  $('.main-navigation li a.smooth-trigger, .menu-mobile-nav ul li a.smooth-trigger').click(function(
-    e
-  ) {
+  $('.main-navigation li a, .menu-mobile-nav ul li a').click(function(e) {
     e.preventDefault();
 
     var href = $(this).attr('href');

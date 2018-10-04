@@ -50,7 +50,7 @@
             </div>
         </div>
 
-    </div>
+    </main>
 
     <div class="about-contact container ">
             <div class="mv6 w-50 center inview-animate">
@@ -74,13 +74,13 @@
                       <h1 class="contact-option-cta soft-transition transition-05s info-featured-h marcopolo-red relative top-0 left-0 convinced not-convinced">About Us</h1>
                     </div>
                 </a>
-            </div>
-          </div>
+              </div>
+      </div>
 
       </div>
    
 
-  </div>
+  </main>
 </div>
 
 
