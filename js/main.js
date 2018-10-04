@@ -390,10 +390,22 @@ jQuery(function($) {
     }
   }
 
-  function blacklist() {
-    const blackListLinks = document.querySelectorAll("a[href='mailto:hi@marcopoloca.com']");
+  function smoothTrigers() {
+    const mobileTriggerLinks = document.querySelectorAll('.menu-mobile-nav ul li a');
 
-    $(blackListLinks).addClass('blacklist');
+    const mobileFirstTrigger = mobileTriggerLinks[1];
+    const mobileSecondTrigger = mobileTriggerLinks[2];
+
+    mobileFirstTrigger.classList.add('smooth-trigger');
+    mobileSecondTrigger.classList.add('smooth-trigger');
+
+    const triggerLinks = document.querySelectorAll('.main-navigation ul li a');
+
+    const firstTrigger = triggerLinks[1];
+    const secondTrigger = triggerLinks[2];
+
+    firstTrigger.classList.add('smooth-trigger');
+    secondTrigger.classList.add('smooth-trigger');
   }
 
   function justOnceFunctions() {
@@ -401,6 +413,7 @@ jQuery(function($) {
       setInterval(mainSlider, 7000);
       setInterval(mainSliderTitles, 7000);
       setInterval(circleLoader, 7000);
+      smoothTrigers();
 
       reRunFunctions();
     });
@@ -415,20 +428,20 @@ jQuery(function($) {
       scrollTitles();
       changeHeaderColor();
       projectLoad();
-      blacklist();
       openNav();
     });
   }
 
-  $('.main-navigation li a, .menu-mobile-nav ul li a').click(function(e) {
+  $('.main-navigation li a.smooth-trigger, .menu-mobile-nav ul li a.smooth-trigger').click(function(
+    e
+  ) {
     e.preventDefault();
 
     var href = $(this).attr('href');
 
     var settings = {
-      anchors: 'a',
+      anchors: 'a:not(.blacklist)',
       debug: true,
-      blacklist: 'a.blacklist',
       cacheLength: 4,
       onStart: {
         duration: 700, // Duration of our animation
