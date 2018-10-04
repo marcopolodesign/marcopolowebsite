@@ -428,7 +428,6 @@ jQuery(function($) {
       scrollTitles();
       changeHeaderColor();
       projectLoad();
-      openNav();
     });
   }
 
@@ -483,4 +482,5 @@ jQuery(function($) {
   });
 
   justOnceFunctions();
+  openNav();
 });
