@@ -133,7 +133,7 @@ jQuery(function($) {
   }
 
   function changeHeaderColor() {
-    if ($('div.content-area').is('.home, .about-template, .project-template')) {
+    if ($('div.content-area').is('.home, .about-template, .project-template, .contact-template')) {
       $('svg.logo path').css('fill', '');
       $('.main-navigation li a').css('color', '');
       $('.breadcrumbs-inner h4, .breadcrumbs-inner a').css('color', '');
@@ -146,10 +146,10 @@ jQuery(function($) {
       $('.menu-trigger-svg line').css('stroke', '#e66065');
     }
 
-    if ($('div.content-area').is('.home, .about-template, .project-template')) {
+    if ($('div.content-area').is('.home, .about-template, .project-template, .contact-template')) {
       if (
         $(window).width() <= 480 &&
-        $('div.content-area').is('.about-template, .project-template')
+        $('div.content-area').is('.about-template, .project-template, .contact-template')
       ) {
         $('svg.logo path').css('fill', '');
         $('.menu-trigger-svg line').css('stroke', '');
@@ -452,13 +452,13 @@ jQuery(function($) {
         }
       },
       onProgress: {
-        duration: 1000,
+        duration: 800,
         render: function() {
           console.log('progressing');
         }
       },
       onReady: {
-        duration: 1000,
+        duration: 800,
         render: function($container, $newContent) {
           // Remove your CSS animation reversing class
           content.restartCSSAnimations();
@@ -466,9 +466,10 @@ jQuery(function($) {
 
           $container.html($newContent);
           console.log('newcontent');
-
-          projectLoad();
-          $container.fadeIn();
+          setTimeout(function() {
+            projectLoad();
+            $container.fadeIn();
+          }, 800);
         }
       },
       onAfter: function() {

@@ -139,6 +139,10 @@ html {
   width: 30%;
 }
 
+.w-45 {
+  width: 45%;
+}
+
 .width-50 {
   width: 50%;
 }
@@ -995,6 +999,7 @@ div.next-project-container:hover a.next-project-name {
   justify-content: space-between;
   margin: 0 auto;
   padding-top: 20vh;
+  padding-bottom: 10vh;
 }
 
 h1.work-title,
@@ -1002,6 +1007,12 @@ h1.work-title,
   width: 35%;
   padding-right: 2%;
 }
+
+h1.contact-title {
+  width: 100%;
+}
+
+
 
 h2.work-description {
   width: 60%;
@@ -1197,9 +1208,55 @@ path.white-fill {
 
 
 
+.contact-buenos-aires h2,
+.contact-miami h2 {
+  width: 100%;
+  padding-left: 0;
+}
+
+.contact-buenos-aires a,
+.contact-miami a {
+  margin: 5px 0px 2px 0px;
+  display: block;
+  font-size: 0.8vw;
+}
 
 
+.contact-page-info-container {
+  width: 100%;
+}
 
+
+.form-inner input,
+textarea {
+  background-color: unset;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  border-radius: 0;
+  padding-bottom: 10px;
+
+}
+
+.form-inner input::placeholder,
+textarea::placeholder {
+  color: #fff;
+  font-family: "GT America", Helvetica, sans-serif;
+}
+
+.button-container button {
+  margin-right: 0;
+  margin-left: auto;
+  background-color: #fff;
+  color: #000;
+  font-family: "GT America", Helvetica, sans-serif;
+  border-radius: 0px;
+  border: none;
+  padding: 15px 20px;
+  background: #fff;
+  width: 20%;
+
+}
 
 
 
