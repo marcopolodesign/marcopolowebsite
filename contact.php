@@ -2,11 +2,19 @@
   // Checks if form has been submitted
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $from = $_POST['email']; 
+<<<<<<< HEAD
     $nombre = $_POST['personName'];
     $company = $_POST['companyname'];
     $phone = $_POST['phone'];
     $budget = $_POST['budget'];
     $clientmessage = $_POST['message'];
+=======
+    $nombre = $_POST['name'];
+    $company = $_POST['companyname'];
+    $phone = $_POST['phone'];
+    $budget = $_POST['budget'];
+    $clientmessage = $_POST['message']
+>>>>>>> 39e7a108d227e221953b7daf1c98fc4b701fd464
     $message = "$nombre at $company dejo el siguiente mensaje:\n\n$clientmessage\n\nFrom: $from\n\nBudget: $budget\nPhone: $phone".PHP_EOL;
 
     mail(
@@ -15,8 +23,11 @@
       $message,
       "From: website@marcopoloca.com"
     );
+<<<<<<< HEAD
 
     header('Location: /thank-you'); 
+=======
+>>>>>>> 39e7a108d227e221953b7daf1c98fc4b701fd464
   }
 ?>
 <?php /* Template Name: Contact */?>
