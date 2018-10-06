@@ -1,23 +1,24 @@
 <?php
- // Checks if form has been submitted
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-              
-                  $to = "hi@marcopoloca.com"; // Mail al que le va a llegar
-                  $from = $_POST['email']; // Mail del usuario
-                  $nombre = $_POST['name']; //Nombre
-                  $company = $_POST['companyname'];
-                  $phone = $_POST['phone'];
-                  $budget = $_POST['budget'];
-                  $subject = "Contacto por web Marco Polo Creative Agency";
-                  $message = $nombre . " " . " dejo el siguiente mensaje:" . "\n\n" . $_POST['message'] . "\n\n" . $from;
-                  $headers = "From: " . $from;
+  // Checks if form has been submitted
+  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $from = $_POST['email']; 
+    $nombre = $_POST['personName'];
+    $company = $_POST['companyname'];
+    $phone = $_POST['phone'];
+    $budget = $_POST['budget'];
+    $clientmessage = $_POST['message'];
+    $message = "$nombre at $company dejo el siguiente mensaje:\n\n$clientmessage\n\nFrom: $from\n\nBudget: $budget\nPhone: $phone".PHP_EOL;
 
-                  mail($to, $subject, $message, $headers);
+    mail(
+      "hi@marcopoloca.com", 
+      "Contacto por web Marco Polo Creative Agency", 
+      $message,
+      "From: website@marcopoloca.com"
+    );
 
-              
-                  // echo "Mensaje enviado. Gracias!" . $nombre . ", Nos pondremos en contacto.";
-                }
-        ?>
+    header('Location: /thank-you'); 
+  }
+?>
 <?php /* Template Name: Contact */?>
 
 <?php get_header();?>
@@ -52,7 +53,7 @@
 
           <form action="" method="POST" id="subForm" class="sign-up form-inner justify-start no-smoothState">
             <div class="flex justify-between ">
-                <input placeholder="Name*" id="fieldName" name="name" type="text" class="mail-input w-45 " >
+                <input placeholder="Name*" id="fieldName" name="personName" type="text" class="mail-input w-45 " required="">
                 <input placeholder="Company Name" id="companyName" name="companyname" type="text" class="mail-input w-45">
             </div>
               <div class="flex justify-between mt5">
@@ -79,4 +80,3 @@
 
 
 <?php get_footer(); ?>
-
