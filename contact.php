@@ -23,15 +23,15 @@
 
 <?php get_header();?>
 
-<div id="project-waypoint" class="content-area contact-template">
+<div  class="content-area contact-template">
   <main id="main" class="site-main ">
 
-    <div class="bg-black w-100 h-100vh">
-      <div class="work-container  flex align-ends">
-        <div class="flex justify-between flex-column items-start inview-animate work-titles w-50">
-          <h1 class="tungsten ttu contact-title white">Your adventure starts here:</h1>
+    <div class="bg-black w-100 min-h-100vh">
+      <div class="work-container  contact-container flex align-ends">
+        <div class="flex justify-between flex-column items-start inview-animate work-titles  contact-titles w-50">
+          <h1  class="tungsten ttu contact-title white">Your adventure starts here:</h1>
           <div class="contact-page-info-container flex items-start justify-between">
-            <div class="contact-buenos-aires w-50 mt4 flex flex-column">
+            <div id="project-waypoint" class="contact-buenos-aires w-50 mt4 flex flex-column">
               <h2 class="tungsten work-description white ttu">Buenos Aires</h2>
               <a class="ttu gt-pressura-mono white">HOLA@MARCOPOLO.AGENCY</a>
               <a class="gt-pressura-mono white">+ 54 9 11 69742032</a>          <a class="gt-pressura-mono white">AV.DEL LIBERTADOR 7766,<br>
@@ -71,6 +71,9 @@
         </div>
 
       </div>
+    </div>
+
+    <div class="" >
     </div>
 
 

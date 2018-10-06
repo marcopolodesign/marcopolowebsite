@@ -196,6 +196,10 @@ html {
   height: 100vh;
 }
 
+.min-h-100vh {
+  min-height: 100vh;
+}
+
 .h-100vh {
   height: 100vh;
 }
@@ -1583,4 +1587,44 @@ textarea::placeholder {
   .h4-big {
     font-size: 3.1vw;
   }
+
+  .contact-container {
+    flex-direction: column;
+  }
+
+
+  .contact-titles {
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .contact-titles h1 {
+    width: 100%;
+  }
+
+  .form-container {
+    width: 100%;
+  }
+
+  .form-inner div input,
+  .form-inner textarea,
+  .form-inner input {
+    width: 100%;
+    margin-top: 30px;
+  }
+
+  .form-inner div {
+    margin: 0;
+  }
+
+  .contact-buenos-aires a,
+  .contact-miami a {
+    font-size: 2.5vw;
+  }
+
+  .contact-buenos-aires,
+  .contact-miami {
+    margin-bottom: 2rem;
+  }
+
 }
