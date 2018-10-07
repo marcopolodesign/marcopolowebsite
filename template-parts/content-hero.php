@@ -16,7 +16,7 @@
               
 							<!-- Project Title -->
 							<div class="project-info-name overflow-hidden mb-40">
-                <h1 class="info-featured-h"><?php the_title();?></h1>
+                <h1 class="info-featured-h home-featured"><?php the_title();?></h1>
               </div>
 
 						  <!--Project CTA  -->

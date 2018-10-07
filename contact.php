@@ -42,12 +42,13 @@
               <h2 class="tungsten work-description white ttu">Miami</h2>
               <a class="ttu gt-pressura-mono white">Hi@MARCOPOLO.AGENCY</a>
               <a class="gt-pressura-mono white">+1 (305) 389-7885</a>
-              <a class="gt-pressura-mono white">AV.DEL LIBERTADOR 7766,<br>
-              CABA. ARGENTINA</a> 
+              <a class="gt-pressura-mono white">7930 NW 36, Miami,<br>
+              FL 33166, USA</a> 
             </div>
           </div>
         </div>
-        <div class="form-container flex flex-column w-50">
+
+        <div class="form-container flex flex-column w-50 inview-animate">
 
         
 
@@ -72,8 +73,29 @@
 
       </div>
     </div>
+    <div class="about-contact container">
+        <div class="mv6 w-50 center">
+              <h2 class="tungsten black">Having second thoughts on contacting us? We’re always open to new projects and collaborations.</h2>
+        </div>
 
-    <div class="" >
+        <div class="flex  flex-column w-100 h-100vh">
+
+          <div class="margin-auto">
+            <a href="/work">
+                <div class="contact-option-1 center tc">
+                  <h2 class="tungsten black mv3 ">You like us but don’t know if we can delivery</h2>
+                  <h1 class="contact-option-cta soft-transition transition-05s info-featured-h marcopolo-red relative top-0 left-0 convinced">Work</h1>
+                </div>
+            </a>
+
+
+            <a href="/about">
+                <div class="contact-option-2 mv4 center tc">
+                  <h2 class="tungsten black mv3 ">Liked our work. Get to love the way we do it</h2>
+                  <h1 class="contact-option-cta soft-transition transition-05s info-featured-h marcopolo-red relative top-0 left-0 convinced not-convinced">About us</h1>
+                </div>
+            </a>
+          </div>
     </div>
 
 

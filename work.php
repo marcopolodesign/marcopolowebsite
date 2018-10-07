@@ -4,7 +4,7 @@
 
 
 
-<div id="project-waypoint" class="content-area work-template">
+<div id="project-waypoint" class="content-area work-template ">
   <main id="main" class="site-main ">
 
 

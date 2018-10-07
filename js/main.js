@@ -1,4 +1,4 @@
-jQuery(function($) {
+jQuery(function ($) {
   currentSlide = 1;
 
   function mainSlider() {
@@ -40,13 +40,13 @@ jQuery(function($) {
         currentSlide = 0;
       }
 
-      slides.forEach(function(slides, index) {
+      slides.forEach(function (slides, index) {
         $(slide).fadeIn();
         $(slide).css('z-index', currentSlide);
         $(prevSlide).fadeOut();
       });
 
-      bcgdImages.forEach(function(bcgdImages, index) {
+      bcgdImages.forEach(function (bcgdImages, index) {
         $(bcgdImage).removeClass('scaled');
         $(bcgdImageMobile).removeClass('scaled');
       });
@@ -98,15 +98,15 @@ jQuery(function($) {
         $(sliderCTA).addClass('animateUpCTA');
       }
 
-      titles.forEach(function(titles, index) {
+      titles.forEach(function (titles, index) {
         $(title).addClass('animateUp');
       });
 
-      titlesContainer.forEach(function(titlesContainer, index) {
+      titlesContainer.forEach(function (titlesContainer, index) {
         $(titleContainer).addClass('animateUp50');
       });
 
-      sliderCTAS.forEach(function(sliderCTAS, index) {
+      sliderCTAS.forEach(function (sliderCTAS, index) {
         $(sliderCTA).addClass('animateUpCTA');
       });
 
@@ -149,7 +149,7 @@ jQuery(function($) {
     if ($('div.content-area').is('.home, .about-template, .project-template, .contact-template')) {
       if (
         $(window).width() <= 480 &&
-        $('div.content-area').is('.about-template, .project-template, .contact-template')
+        $('div.content-area').is('.about-template, .project-template, .contact-template, .home')
       ) {
         $('svg.logo path').css('fill', '');
         $('.menu-trigger-svg line').css('stroke', '');
@@ -157,7 +157,7 @@ jQuery(function($) {
         // $('.header-inner').css('box-shadow', 'rgb(153, 153, 153) 0px 0px 4px');
       }
 
-      $(document).on('scroll', function() {
+      $(document).on('scroll', function () {
         var currentScroll = $(document).scrollTop();
         var currentScrollOffset = currentScroll + 140;
         var colorTrigger = $('#project-waypoint').offset().top;
@@ -190,7 +190,7 @@ jQuery(function($) {
     }
 
     if ($(window).width() < 768 && $('div.content-area').is('work-template')) {
-      $(document).on('scroll', function() {
+      $(document).on('scroll', function () {
         var currentScroll = $(document).scrollTop();
         var currentScrollOffset = currentScroll + 140;
         var colorTrigger = $('#project-waypoint').offset().top;
@@ -204,12 +204,12 @@ jQuery(function($) {
 
   function headerOnWhite() {
     if ($('div.content-area').hasClass('work-template')) {
-      $(document).ready(function() {
+      $(document).ready(function () {
         $('svg.logo path').css('fill', '#e66065');
         $('.main-navigation li a').css('color', '#e66065');
         $('.menu-trigger-svg line').css('stroke', '#e66065');
 
-        $(document).on('scroll', function() {
+        $(document).on('scroll', function () {
           var currentScroll = $(document).scrollTop();
 
           if ($(window).width() <= 480 && currentScroll > 0) {
@@ -226,10 +226,10 @@ jQuery(function($) {
   function playVideoCursor() {
     if ($('div.content-area').hasClass('project-template')) {
       $('.video-container')
-        .mouseover(function() {
+        .mouseover(function () {
           const videoContainer = document.querySelector('.video-container');
 
-          videoContainer.addEventListener('mousemove', function(event) {
+          videoContainer.addEventListener('mousemove', function (event) {
             const mouseX = event.pageX;
             const pageY = event.pageY;
 
@@ -244,7 +244,7 @@ jQuery(function($) {
             cursor.style.transition = '';
           });
         })
-        .mouseout(function() {
+        .mouseout(function () {
           const cursor = document.querySelector('.play-video-cursor');
 
           cursor.style.left = 50 + '%';
@@ -261,7 +261,7 @@ jQuery(function($) {
       const bodyTag = document.querySelector('body');
       const progressBarWidth = document.querySelector('div.progress');
 
-      document.addEventListener('scroll', function() {
+      document.addEventListener('scroll', function () {
         const pixels = window.pageYOffset;
         const pageHeight = bodyTag.getBoundingClientRect().height;
         const totalScrollableDistance = pageHeight - window.innerHeight;
@@ -300,13 +300,13 @@ jQuery(function($) {
   }
 
   function openNav() {
-    $(document).ready(function() {
+    $(document).ready(function () {
       const trigger = document.querySelector('svg.menu-trigger-svg');
       const menuMobile = document.querySelector('.menu-mobile-container');
       const menuLinkContainer = document.querySelectorAll('.menu-mobile-container ul li');
       const menuLinkContainerLinks = document.querySelectorAll('.menu-mobile-container ul li a');
 
-      $(trigger).on('click', function() {
+      $(trigger).on('click', function () {
         $('.header-inner').css('background-color', '');
         $(menuMobile).toggleClass('active-trigger');
         $(menuLinkContainer).toggleClass('animateUp50');
@@ -321,7 +321,7 @@ jQuery(function($) {
   }
 
   function closeNav() {
-    $(document).ready(function() {
+    $(document).ready(function () {
       const trigger = document.querySelector('svg.menu-trigger-svg');
       const menuMobile = document.querySelector('.menu-mobile-container');
       const menuLinkContainer = document.querySelectorAll('.menu-mobile-container ul li');
@@ -356,39 +356,99 @@ jQuery(function($) {
   }
 
   function projectLoad() {
-    setTimeout(function() {
+    setTimeout(function () {
+      const slideshowImagesMobile = Array.prototype.slice.call(
+        document.querySelectorAll('div.slideshow-project.mobile.scaled'));
+
+      const maxMobileSlides = slideshowImagesMobile.length;
+
+      const slideshowImageMobile = slideshowImagesMobile[maxMobileSlides - 1];
+
+      const slideshowImages = Array.prototype.slice.call(
+        document.querySelectorAll('div.slideshow-project.desktop.scaled'));
+
+      const maxSlides = slideshowImages.length;
+
+      const slideshowImage = slideshowImages[maxSlides - 1];
+
+
+
       $('.slideshow-inside').removeClass('scaled');
       $('.project-info-name h1, p.project-intro').addClass('animateUp');
+
+      //Para el home
+      $(slideshowImageMobile).removeClass('scaled');
+      $(slideshowImage).removeClass('scaled');
+      $("div.project-info-cta:last-of-type").css('opacity', '1');
+
+
+      setTimeout(function () {
+        $("h1.home-featured:last-of-type").css('transform', 'translateY(0)');
+        // $("div.project-info-cta:last-of-type").css('opacity', 'translateY(0)');
+
+
+
+      }, 7000);
+
+
     }, 300);
+
   }
 
   function preloaderColor() {
+    $('.preloader-background').addClass('background-animated');
+
+    if ($('div.content-area').hasClass('work-template')) {
+      $('.preloader-background').css('background-color', '#fff');
+    } else if ($('div.content-area').hasClass('about-template')) {
+      $('.preloader-background').css('background-color', '#e66065');
+    } else if ($('div.content-area').hasClass('contact-template')) {
+      $('.preloader-background').css('background-color', '#000');
+    } else if ($('div.content-area').hasClass('home')) {
+      $('.preloader-background').css('background-color', '#fff');
+    } else if ($('div.content-area').hasClass('project-template')) {
+      $('.preloader-background').css('background-color', '#fff');
+    }
+    $('.preloader-animate').removeClass('preloader-animated');
+
+
+
+  }
+
+  function preloaderAnimate() {
     if ($('div.content-area').hasClass('work-template')) {
       $('.preloader-animate').css('background-color', '#fff');
     } else if ($('div.content-area').hasClass('about-template')) {
       $('.preloader-animate').css('background-color', '#e66065');
+    } else if ($('div.content-area').hasClass('contact-template')) {
+      $('.preloader-animate').css('background-color', '#000');
     } else if ($('div.content-area').hasClass('home')) {
       $('.preloader-animate').css('background-color', '#fff');
     } else if ($('div.content-area').hasClass('project-template')) {
       $('.preloader-animate').css('background-color', '#fff');
     }
+
+
+    $('.preloader-animate').addClass('preloader-animated');
+
+
+
+    setTimeout(function () {
+      $('.preloader-background').css('background-color', '');
+      $('.preloader-animate').css('background-color', '');
+      $('.preloader-background').removeClass('background-animated');
+
+
+    }, 1500)
+
+
   }
 
-  function pageColor() {
-    if ($('div.content-area').hasClass('about-template')) {
-      $('.site').css('background-color', '#e66065');
-    } else if ($('div.content-area').hasClass('work-template')) {
-      $('.site').css('background-color', '#fff');
-    }
-  }
 
-  function preloaderChange() {
-    if ($('.preloader-animate').hasClass('preloader-animated')) {
-      $('.preloader-animate').removeClass('preloader-animated');
-    } else {
-      $('.preloader-animate').addClass('preloader-animated');
-    }
-  }
+
+
+
+
 
   function smoothTrigers() {
     const mobileTriggerLinks = document.querySelectorAll('.menu-mobile-nav ul li a');
@@ -409,7 +469,7 @@ jQuery(function($) {
   }
 
   function justOnceFunctions() {
-    $(document).ready(function() {
+    $(document).ready(function () {
       setInterval(mainSlider, 7000);
       setInterval(mainSliderTitles, 7000);
       setInterval(circleLoader, 7000);
@@ -421,7 +481,7 @@ jQuery(function($) {
   }
 
   function reRunFunctions() {
-    $(document).ready(function() {
+    $(document).ready(function () {
       firstProjectAnimate();
       progressBar();
       playVideoCursor();
@@ -432,19 +492,20 @@ jQuery(function($) {
     });
   }
 
-  $('.main-navigation li a, .menu-mobile-nav ul li a').click(function(e) {
+  $('.site-branding a, .main-navigation li a, .menu-mobile-nav ul li a').click(function (e) {
     e.preventDefault();
 
     var href = $(this).attr('href');
 
     var settings = {
-      anchors: 'a:not(.blacklist)',
+      anchors: 'a',
       debug: true,
       cacheLength: 0,
       onStart: {
         duration: 700, // Duration of our animation
-        render: function($container) {
+        render: function ($container) {
           closeNav();
+          preloaderColor()
           $container.fadeOut(600);
           $('svg.logo path').css('fill', '#e66065');
           $('.main-navigation li a').css('color', '#e66065');
@@ -453,26 +514,28 @@ jQuery(function($) {
       },
       onProgress: {
         duration: 800,
-        render: function() {
+        render: function () {
           console.log('progressing');
+
         }
       },
       onReady: {
         duration: 800,
-        render: function($container, $newContent) {
+        render: function ($container, $newContent) {
           // Remove your CSS animation reversing class
           content.restartCSSAnimations();
           console.log('ready');
 
           $container.html($newContent);
           console.log('newcontent');
-          setTimeout(function() {
+          preloaderAnimate();
+          setTimeout(function () {
             projectLoad();
             $container.fadeIn();
           }, 800);
         }
       },
-      onAfter: function() {
+      onAfter: function () {
         reRunFunctions();
       }
     };
